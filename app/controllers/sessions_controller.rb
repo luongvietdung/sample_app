@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   		params[:session][:remember_me] == 1 ? remember(user) : forget(user)
   		log_in user
   		remember user
-  		redirect_to user
+  		redirect_to_back_or user 
   	else
   		flash[:danger] = "Invalid email / password combination"
   		render 'new'
