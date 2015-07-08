@@ -34,6 +34,5 @@ module SessionsHelper
 		cookies.delete(:user_id)
 		cookies.delete(:remember_token)
 	end
-	
 end
 
