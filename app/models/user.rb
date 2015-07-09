@@ -33,10 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def password_reset_expired?
-    self.reset_send_at < 2.hours.aqo
-  end
-  def reset?(user_params)
-    update_attribute(user_params)
+    self.reset_send_at < 2.hours.ago
   end
 
   def activate
