@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
+  has_many :active_relationships, class_name: "Relationship", foregin_key: "follower_id", dependent: :destroy  
+  has_many :following, through: :active_relationships, source: :followed
+  
 	attr_accessor :remember_token, :activation_token, :password_reset_token
   before_create :create_activation
 	before_save {:downcase_email}
