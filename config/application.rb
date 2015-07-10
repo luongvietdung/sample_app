@@ -21,6 +21,5 @@ module SamoleApp
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
-end
   end
 end
