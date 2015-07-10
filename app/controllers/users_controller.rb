@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
   def show
   	@user = User.find(params[:id])	
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 5)
   end
   def create
   	@user = User.new(user_params)
@@ -43,19 +44,15 @@ class UsersController < ApplicationController
     flash[:success] = "User deleted"
     redirect_to users_url
   end
+
+  def feed
+    
   end
   
   private
   	def user_params
-  		params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  		
+  		params.require(:user).permit(:name, :email, :password, :password_confirmation)	
   	end
-    def logged_in_user
-      if !logged_in?
-        store_session
-        flash[:danger] = "Please log in!"
-        redirect_to login_url
-      end
     def correct_user
       user = User.find(params[:id])
       redirect_to root_url if !current_user?(user)

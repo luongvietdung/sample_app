@@ -24,7 +24,6 @@ Rails.application.configure do
     :authentication => :plain,
     :user_name      => 'dung.lv1992@gmail.com',
     :password       => 'dung26051992@',
-    :authentication       => :plain,
     :enable_starttls_auto => true
   }
 

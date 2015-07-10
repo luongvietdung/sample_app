@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :microposts, dependent: :destroy
 	attr_accessor :remember_token, :activation_token, :password_reset_token
   before_create :create_activation
 	before_save {:downcase_email}
@@ -58,6 +59,10 @@ class User < ActiveRecord::Base
   def send_email_password_reset
     create_reset_token
     UserMailer.password_reset(self).deliver_now
+  end
+
+  def feed
+    self.microposts
   end
   private
 
